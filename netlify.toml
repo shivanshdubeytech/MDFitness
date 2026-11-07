@@ -1,6 +1,9 @@
 [build]
   publish = "Web/frontend"
 
+[build.environment]
+  NODE_VERSION = "20"
+
 # SPA hash routing fallback
 [[redirects]]
   from = "/*"
@@ -34,4 +37,3 @@
   for = "*.js"
   [headers.values]
     Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
-

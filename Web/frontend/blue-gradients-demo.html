@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Gradient Examples</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 2rem;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .gradients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .gradient-card {
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .gradient-card:hover {
+            transform: translateY(-10px);
+        }
+        .gradient-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .gradient-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .section {
+            margin: 3rem 0;
+        }
+        .text-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .text-example {
+            font-size: 2rem;
+            font-weight: 800;
+            padding: 1rem;
+        }
+        pre {
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        code {
+            color: #93c5fd;
+        }
+        .hero-section {
+            height: 300px;
+            border-radius: 20px;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blue Gradient Collection</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+            A collection of beautiful blue gradients for your web projects. All gradients are defined as CSS variables and classes in your style.css file.
+        </p>
+        
+        <div class="section">
+            <h2>Background Gradients</h2>
+            <div class="gradients-grid">
+                <div class="gradient-card blue-gradient-1">
+                    <div class="gradient-title">Blue Gradient 1</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #0061ff, #60efff)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-1</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-2">
+                    <div class="gradient-title">Blue Gradient 2</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #009ffd, #2a2a72)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-2</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-3">
+                    <div class="gradient-title">Blue Gradient 3</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #4facfe, #00f2fe)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-3</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-4">
+                    <div class="gradient-title">Blue Gradient 4</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #00c6ff, #0072ff)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-4</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-5">
+                    <div class="gradient-title">Blue Gradient 5</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #667eea, #764ba2)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-5</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-10">
+                    <div class="gradient-title">Blue Gradient 10</div>
+                    <div class="gradient-desc">linear-gradient(135deg, #3b82f6, #60a5fa, #93c5fd)</div>
+                    <div class="gradient-desc">Class: .blue-gradient-10</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Animated Blue Gradients</h2>
+            <div class="gradients-grid">
+                <div class="gradient-card blue-gradient-animated-1">
+                    <div class="gradient-title">Animated Blue Gradient 1</div>
+                    <div class="gradient-desc">4-color animated gradient</div>
+                    <div class="gradient-desc">Class: .blue-gradient-animated-1</div>
+                </div>
+                
+                <div class="gradient-card blue-gradient-animated-2">
+                    <div class="gradient-title">Animated Blue Gradient 2</div>
+                    <div class="gradient-desc">4-color animated gradient</div>
+                    <div class="gradient-desc">Class: .blue-gradient-animated-2</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Text Gradients</h2>
+            <div class="text-examples">
+                <div class="text-example blue-gradient-text-1">Blue Gradient Text 1</div>
+                <div class="text-example blue-gradient-text-2">Blue Gradient Text 2</div>
+            </div>
+            <p style="text-align: center;">
+                Apply to any text element with classes: .blue-gradient-text-1 or .blue-gradient-text-2
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2>Button Gradients</h2>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+                <button class="btn btn-blue-gradient-1">Button Gradient 1</button>
+                <button class="btn btn-blue-gradient-2">Button Gradient 2</button>
+            </div>
+            <p style="text-align: center;">
+                Use classes: .btn-blue-gradient-1 or .btn-blue-gradient-2
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2>Card Gradients</h2>
+            <div class="gradients-grid">
+                <div class="card-blue-gradient-1">
+                    <h3>Card with Blue Gradient 1</h3>
+                    <p>This is a card with a blue gradient background. Use class: .card-blue-gradient-1</p>
+                </div>
+                
+                <div class="card-blue-gradient-2">
+                    <h3>Card with Blue Gradient 2</h3>
+                    <p>This is a card with a blue gradient background. Use class: .card-blue-gradient-2</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Hero Section Examples</h2>
+            <div class="hero-section hero-bg-blue-1">
+                <h2 class="hero-title">Hero with Blue Gradient 1</h2>
+                <p class="hero-subtitle">Use class: .hero-bg-blue-1 for hero sections</p>
+            </div>
+            
+            <div class="hero-section hero-bg-blue-2">
+                <h2 class="hero-title">Hero with Blue Gradient 2</h2>
+                <p class="hero-subtitle">Use class: .hero-bg-blue-2 for hero sections</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>How to Use</h2>
+            <p>Simply add the appropriate class to any HTML element:</p>
+            
+            <pre><code>&lt;!-- Background gradients --&gt;
+&lt;div class="blue-gradient-1"&gt;Content here&lt;/div&gt;
+
+&lt;!-- Text gradients --&gt;
+&lt;h1 class="blue-gradient-text-1"&gt;Gradient Text&lt;/h1&gt;
+
+&lt;!-- Buttons --&gt;
+&lt;button class="btn-blue-gradient-1"&gt;Gradient Button&lt;/button&gt;
+
+&lt;!-- Cards --&gt;
+&lt;div class="card-blue-gradient-1"&gt;Card content&lt;/div&gt;
+
+&lt;!-- Hero sections --&gt;
+&lt;section class="hero-bg-blue-1"&gt;Hero content&lt;/section&gt;</code></pre>
+            
+            <p>You can also use the CSS variables directly in your own styles:</p>
+            
+            <pre><code>/* CSS variables available */
+--blue-gradient-1: linear-gradient(135deg, #0061ff, #60efff);
+--blue-gradient-2: linear-gradient(135deg, #009ffd, #2a2a72);
+--blue-gradient-3: linear-gradient(135deg, #4facfe, #00f2fe);
+--blue-gradient-4: linear-gradient(135deg, #00c6ff, #0072ff);
+--blue-gradient-5: linear-gradient(135deg, #667eea, #764ba2);</code></pre>
+        </div>
+    </div>
+</body>
+</html>

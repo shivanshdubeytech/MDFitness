@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MD Fitness - Premier health and fitness gym in Nalasopara East. State-of-the-art strength training, cardio deck, boxing ring, yoga studio, certified trainers, and nutrition coaching.">
+    <meta name="keywords"
+        content="MD Fitness, Gym in Nalasopara, Fitness Club Palghar, Weight Training, Boxing, Yoga, Personal Trainers, Calorie Calculator">
+    <meta property="og:title" content="MD Fitness | Premier Gym & Health Club">
+    <meta property="og:description"
+        content="Transform your body at MD Fitness. World-class equipment, certified trainers, boxing, yoga, and personal coaching in Nalasopara East.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0b0f19">
+
+    <title>MD Fitness | Premier Health & Fitness Club &bull; Nalasopara East</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><path d='M30 35 L30 65 M70 35 L70 65 M20 40 L40 40 M60 40 L80 40 M20 60 L40 60 M60 60 L80 60 M30 50 L70 50' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-sans bg-slate-950 text-gray-100 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <nav id="main-nav" class="fixed w-full z-50 top-0 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <!-- Brand Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="#home" class="nav-button flex items-center gap-2.5 group">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition duration-200">
+                                <i class="fas fa-dumbbell text-white text-lg"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-2xl font-black tracking-tight font-montserrat flex items-baseline">
+                                    <span class="text-blue-500">MD</span>
+                                    <span class="text-white ml-1">FITNESS</span>
+                                </span>
+                                <span
+                                    class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold -mt-1">Club
+                                    & Gym</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Nav Links -->
+                    <div class="hidden lg:block">
+                        <div class="flex items-center space-x-1 xl:space-x-2">
+                            <a href="#home" class="nav-link nav-button text-sm">Home</a>
+                            <a href="#about" class="nav-link nav-button text-sm">About</a>
+                            <a href="#programs" class="nav-link nav-button text-sm">Programs</a>
+                            <a href="#trainers" class="nav-link nav-button text-sm">Trainers</a>
+                            <a href="#calculator" class="nav-link nav-button text-sm">Calculator</a>
+                            <a href="#pricing" class="nav-link nav-button text-sm">Plans</a>
+                            <a href="#testimonials" class="nav-link nav-button text-sm">Reviews</a>
+                            <a href="#gallery" class="nav-link nav-button text-sm">Gallery</a>
+                            <a href="#contact" class="nav-link nav-button text-sm">Contact</a>
+                            <a href="#responses" class="nav-link nav-button text-sm text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-shield-halved mr-1"></i>Portal
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Action Controls (Free Pass, Auth, Mobile Menu) -->
+                    <div class="flex items-center gap-3">
+                        <!-- Free Trial Day Pass CTA -->
+                        <a href="#contact"
+                            class="nav-button hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-600/30 transition transform hover:scale-105">
+                            <i class="fas fa-ticket-simple"></i>Free Day Pass
+                        </a>
+
+                        <!-- Account / Member Button -->
+                        <button id="authBtn"
+                            class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 hover:text-white hover:border-blue-500/50 hover:bg-slate-800 transition text-sm font-medium flex items-center gap-1.5"
+                            aria-label="Member Account">
+                            <i class="fas fa-user-circle text-blue-400 text-lg"></i>
+                            <span id="authBtnText" class="hidden md:inline text-xs font-semibold">Member</span>
+                        </button>
+
+                        <!-- Mobile Menu Button -->
+                        <div class="lg:hidden">
+                            <button id="mobile-menu-button"
+                                class="text-slate-300 hover:text-white p-2.5 rounded-xl bg-slate-900 border border-slate-800 focus:outline-none"
+                                aria-label="Toggle navigation menu">
+                                <i class="fas fa-bars text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu"
+                class="hidden lg:hidden border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-xl px-4 pt-3 pb-5 space-y-1">
+                <a href="#home" class="nav-link-mobile nav-button">Home</a>
+                <a href="#about" class="nav-link-mobile nav-button">About MD Fitness</a>
+                <a href="#programs" class="nav-link-mobile nav-button">Training Programs</a>
+                <a href="#trainers" class="nav-link-mobile nav-button">Certified Coaches</a>
+                <a href="#calculator" class="nav-link-mobile nav-button">Calorie & Macro Calculator</a>
+                <a href="#pricing" class="nav-link-mobile nav-button">Membership Plans</a>
+                <a href="#testimonials" class="nav-link-mobile nav-button">Member Reviews</a>
+                <a href="#gallery" class="nav-link-mobile nav-button">Facility Gallery</a>
+                <a href="#contact" class="nav-link-mobile nav-button text-blue-400 font-bold">Free Trial Day Pass</a>
+                <a href="#responses" class="nav-link-mobile nav-button text-cyan-400">Staff Portal</a>
+
+                <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+                    <button id="mobileAuthBtn"
+                        class="w-full py-2.5 px-4 bg-slate-900 border border-slate-700 rounded-xl text-center text-sm font-semibold text-white">
+                        <i class="fas fa-user-circle mr-2 text-blue-400"></i><span id="mobileAuthText">Member Sign In /
+                            Register</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container (SPA Sections) -->
+    <main class="content-wrapper">
+
+        <!-- ==================== PAGE: HOME ==================== -->
+        <section id="page-home" class="page-section hero-bg min-h-screen flex flex-col justify-center relative">
+            <div class="hero-glow"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-10 pb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-6">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            Nalasopara's Top Rated Fitness Club &bull; Est. 2014
+                        </div>
+
+                        <h1
+                            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight font-montserrat mb-6">
+                            TRANSFORM YOUR BODY.
+                            <br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">FORGE
+                                YOUR STRENGTH.</span>
+                        </h1>
+
+                        <p
+                            class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                            Welcome to <strong class="text-white font-semibold">MD Fitness</strong>. Experience
+                            heavy-duty strength equipment, certified personal trainers, dedicated boxing arena, HIIT
+                            conditioning, and scientific nutrition planning in Central Park, Nalasopara East.
+                        </p>
+
+                        <!-- Call to Actions -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                            <a href="#contact"
+                                class="btn-fire nav-button text-base sm:text-lg px-8 py-3.5 shadow-xl shadow-orange-600/30">
+                                <i class="fas fa-fire mr-2"></i>Claim Free Day Pass
+                            </a>
+                            <a href="#calculator" class="btn-secondary nav-button text-base sm:text-lg px-7 py-3.5">
+                                <i class="fas fa-calculator mr-2"></i>Calorie Calculator
+                            </a>
+                            <a href="#pricing" class="btn-primary nav-button text-base sm:text-lg px-7 py-3.5">
+                                <i class="fas fa-tags mr-2"></i>View Plans
+                            </a>
+                        </div>
+
+                        <!-- Highlights Bar -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-dumbbell text-blue-400 text-xl"></i>
+                                <span class="text-xs sm:text-sm text-slate-300 font-medium">Olympic Weights</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-user-check text-green-400 text-xl"></i>
+                                <span class="text-xs sm:text-sm text-slate-300 font-medium">Certified Coaches</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-heart-pulse text-cyan-400 text-xl"></i>
+                                <span class="text-xs sm:text-sm text-slate-300 font-medium">Cardio Deck</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-shower text-yellow-400 text-xl"></i>
+                                <span class="text-xs sm:text-sm text-slate-300 font-medium">Steam & Showers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Card / Spotlight -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div
+                                class="glass-panel p-6 sm:p-8 rounded-3xl border border-blue-500/20 relative overflow-hidden group">
+                                <div
+                                    class="absolute -top-12 -right-12 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl pointer-events-none">
+                                </div>
+
+                                <div class="flex items-center justify-between mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full uppercase tracking-wider">Gym
+                                        Arena Preview</span>
+                                    <span class="text-xs text-green-400 font-semibold flex items-center gap-1">
+                                        <i class="fas fa-circle text-[8px] animate-ping"></i> Open 7 Days
+                                    </span>
+                                </div>
+
+                                <div class="h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 bg-slate-900 relative">
+                                    <img src="gym-about.jpg" alt="MD Fitness gym floor"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80">
+                                    </div>
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <h4 class="text-white font-bold text-lg">Main Training Floor</h4>
+                                        <p class="text-xs text-slate-300">Over 50+ selectorized pin & plate loaded
+                                            machines.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-baseline justify-between mb-2">
+                                    <h3 class="text-xl sm:text-2xl font-bold text-white font-montserrat">3-Month
+                                        Transformation</h3>
+                                    <div class="text-right">
+                                        <div class="text-xl sm:text-2xl font-black text-blue-400">₹3,999</div>
+                                        <div class="text-xs text-slate-500 line-through">₹5,499</div>
+                                    </div>
+                                </div>
+
+                                <p class="text-slate-400 text-xs sm:text-sm mb-6">
+                                    Includes full gym access &bull; Personalized workout chart &bull; Free diet
+                                    consultation &bull; Steam bath.
+                                </p>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="window.openEnrollModal('3-month-transformation')"
+                                        class="btn-primary py-2.5 text-sm w-full">
+                                        <i class="fas fa-check-circle mr-2"></i>Enroll Now
+                                    </button>
+                                    <a href="#contact"
+                                        class="btn-secondary nav-button py-2.5 text-sm w-full text-center">
+                                        <i class="fas fa-ticket mr-2"></i>Free Pass
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="text-center pb-4 text-slate-500 hidden md:block">
+                <a href="#about" class="nav-button hover:text-blue-400 transition animate-bounce inline-block">
+                    <i class="fas fa-chevron-down text-lg"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: ABOUT ==================== -->
+        <section id="page-about" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Our Legacy & Mission</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Why MD Fitness?</h2>
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-light">
+                        Over 10 years of empowering transformations in Nalasopara East and Palghar district. We blend
+                        serious strength culture with welcoming coaching and pristine amenities.
+                    </p>
+                </div>
+
+                <!-- Main About Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="relative">
+                        <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+                            <img src="gym-about.jpg" alt="MD Fitness interior"
+                                class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent">
+                            </div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span
+                                    class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">World-Class
+                                    Gym Floor</span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mt-2 font-montserrat">Central Park,
+                                    Nalasopara East</h3>
+                                <p class="text-slate-300 text-sm">Spacious training zones dedicated to weightlifting,
+                                    cardio, boxing, and yoga.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-6 font-montserrat">
+                            A Gym Built for Real Results
+                        </h3>
+                        <p class="text-slate-300 mb-8 leading-relaxed">
+                            Founded in 2014, MD Fitness was born with a single mission: to provide world-class equipment
+                            and passionate training guidance without predatory pricing. Whether you are lifting a
+                            barbell for the very first time or preparing for a competitive physique contest, our
+                            community supports your progress every single day.
+                        </p>
+
+                        <!-- Feature Badges -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-dumbbell text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base mb-1">Heavy Strength Deck</h4>
+                                    <p class="text-slate-400 text-xs">Squat racks, Olympic platforms, dumbbells up to
+                                        50kg, and cable stations.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-certificate text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base mb-1">Certified Trainers</h4>
+                                    <p class="text-slate-400 text-xs">ACE, ACSM, K11, and Gold's Gym certified master
+                                        coaches.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-apple-whole text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base mb-1">Custom Nutrition</h4>
+                                    <p class="text-slate-400 text-xs">Macronutrient profiling and meal plans tailored to
+                                        Indian dietary habits.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-spa text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base mb-1">Recovery & Steam</h4>
+                                    <p class="text-slate-400 text-xs">Hygienic locker rooms, hot water showers, and
+                                        detoxifying steam baths.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestones Numbers -->
+                <div
+                    class="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 px-8 rounded-3xl bg-slate-900/70 border border-slate-800">
+                    <div class="text-center">
+                        <div class="text-3xl sm:text-5xl font-black text-blue-400 font-montserrat">10+</div>
+                        <div class="text-slate-300 font-medium text-sm sm:text-base mt-1">Years of Excellence</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Established in 2014</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl sm:text-5xl font-black text-cyan-400 font-montserrat">3,500+</div>
+                        <div class="text-slate-300 font-medium text-sm sm:text-base mt-1">Transformed Members</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Across Nalasopara & Palghar</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl sm:text-5xl font-black text-green-400 font-montserrat">100+</div>
+                        <div class="text-slate-300 font-medium text-sm sm:text-base mt-1">Imported Machines</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Biomechanical Precision</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl sm:text-5xl font-black text-amber-400 font-montserrat">4.9★</div>
+                        <div class="text-slate-300 font-medium text-sm sm:text-base mt-1">Google Rating</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Over 250+ Verified Reviews</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: PROGRAMS ==================== -->
+        <section id="page-programs" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Training Curriculums</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Our Fitness Programs</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Engineered for all fitness levels. Guided by coaches to build raw muscle, shred fat, improve
+                        mobility, or master combat sports.
+                    </p>
+                </div>
+
+                <!-- Programs Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Program 1: Strength & Hypertrophy -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="gym-strength.jpg" alt="Strength & Muscle Building"
+                                    class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Hypertrophy</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">Strength & Muscle Building
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Progressive overload training using Olympic barbells, dumbells, and specialized
+                                plate-loaded machinery to build dense muscle and bone strength.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Squat,
+                                    Bench, Deadlift</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">60
+                                    Min Sessions</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">High
+                                    Intensity</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Trial Session
+                        </a>
+                    </div>
+
+                    <!-- Program 2: Cardio & Endurance -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="CardioEq.jpg" alt="Cardio & Fat Shred" class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Fat
+                                    Burn</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">Cardio & Fat Burn Arena</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                State-of-the-art motorized treadmills, elliptical cross trainers, stair climbers, and
+                                spin bikes with live heart-rate monitoring to burn 600+ kcal/session.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Treadmills
+                                    & Ellipticals</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">HIIT
+                                    Cardio</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Stamina
+                                    Boost</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Trial Session
+                        </a>
+                    </div>
+
+                    <!-- Program 3: Boxing & Combat -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="gym-boxing.jpg" alt="Boxing & Kickboxing Combat"
+                                    class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Combat
+                                    Arts</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">Boxing & Kickboxing Combat
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Heavy bag drills, footwork, speed bag, and mitt work guided by national combat
+                                medalists. Develop lightning reflexes, functional power, and self-defense.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Heavy
+                                    Bags & Mitts</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Footwork
+                                    & Agility</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">800
+                                    kcal/hr</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Trial Session
+                        </a>
+                    </div>
+
+                    <!-- Program 4: Functional Conditioning -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="gym-functional.jpg" alt="Functional Conditioning"
+                                    class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Cross-Training</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">Functional Conditioning</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Kettlebells, battle ropes, plyometric boxes, and sled pushes designed to forge
+                                athleticism, core stability, and athletic stamina.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Battle
+                                    Ropes & Sleds</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Plyometrics</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Core
+                                    Power</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Trial Session
+                        </a>
+                    </div>
+
+                    <!-- Program 5: Yoga & Recovery -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="gym-yoga.jpg" alt="Yoga & Mobility Recovery"
+                                    class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Mobility</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">Yoga & Mobility Recovery</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Hatha & Vinyasa yoga sessions focused on spinal alignment, deep hamstring flexibility,
+                                breath control (Pranayama), and injury prevention.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Spinal
+                                    Flexibility</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Post-Workout
+                                    Stretch</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Stress
+                                    Relief</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Trial Session
+                        </a>
+                    </div>
+
+                    <!-- Program 6: Personal Coaching -->
+                    <div class="gym-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-56 rounded-xl overflow-hidden mb-5 relative">
+                                <img src="Prem.jpeg" alt="Personal Training & Diet" class="w-full h-full object-cover">
+                                <span
+                                    class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">1-on-1
+                                    VIP</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 font-montserrat">1-on-1 Personal Transformation
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                                Dedicated coach assigned specifically to your goals. Includes body fat caliper
+                                measurements, weekly weight progression, and tailored diet adjustment.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs mb-6">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Custom
+                                    Diet Plan</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Weekly
+                                    Check-ins</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-300">Guaranteed
+                                    Results</span>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn-primary nav-button w-full text-center py-2.5 text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i>Book Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: TRAINERS ==================== -->
+        <section id="page-trainers" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Expert Guidance</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Certified Master Coaches</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Our trainers are certified, experienced, and dedicated to teaching correct lifting biomechanics,
+                        preventing injuries, and motivating you past plateaus.
+                    </p>
+                </div>
+
+                <!-- Trainers Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Trainer 1 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T1.jpeg" alt="Coach Rohan" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Rohan</h3>
+                            <p class="text-blue-400 font-semibold text-xs uppercase tracking-wider mb-2">Head Strength &
+                                Conditioning Coach</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                8+ years coaching powerlifters and physique athletes. Specialist in barbell mechanics,
+                                squat depth, and deadlift power.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">K11
+                                    Certified</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">IPF
+                                    Powerlifting</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Rohan')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Rohan
+                        </button>
+                    </div>
+
+                    <!-- Trainer 2 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T2.jpg" alt="Coach Aryan" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Aryan</h3>
+                            <p class="text-cyan-400 font-semibold text-xs uppercase tracking-wider mb-2">Aesthetics &
+                                Calisthenics Specialist</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                Master of physique symmetry, core chiseling, and bodyweight calisthenics. Specializes in
+                                lean athletic muscle transformations.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">ACE
+                                    Certified</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Calisthenics
+                                    Lead</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Aryan')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Aryan
+                        </button>
+                    </div>
+
+                    <!-- Trainer 3 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T3.jpeg.jpg" alt="Coach Vikram" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Vikram</h3>
+                            <p class="text-red-400 font-semibold text-xs uppercase tracking-wider mb-2">Heavy Barbell
+                                Strength & Combat Lead</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                Competitive powerlifter and combat conditioning tactician. Master of heavy
+                                squat/deadlift mechanics, power punching, and CNS output.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">IPF
+                                    Lifter</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Combat
+                                    Conditioning</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Vikram')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Vikram
+                        </button>
+                    </div>
+
+                    <!-- Trainer 4 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T4.jpeg" alt="Coach Priya" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Priya</h3>
+                            <p class="text-amber-400 font-semibold text-xs uppercase tracking-wider mb-2">Female
+                                Transformation & Functional Coach</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                Expert in women's strength training, postpartum core reconditioning, functional
+                                mobility, and sustainable fat loss nutrition.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">ACSM
+                                    Certified</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Clinical
+                                    Nutrition</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Priya')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Priya
+                        </button>
+                    </div>
+
+                    <!-- Trainer 5 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T5.jpg" alt="Coach Rahul & Group Team" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Rahul & Group Team</h3>
+                            <p class="text-green-400 font-semibold text-xs uppercase tracking-wider mb-2">Lead Group
+                                HIIT & Circuit Conditioning</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                High-voltage group fitness instructor specializing in aerobic conditioning, fat-torch
+                                circuits, and dynamic team motivation.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">CrossFit
+                                    L1</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Aerobics
+                                    Master</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Rahul')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Rahul
+                        </button>
+                    </div>
+
+                    <!-- Trainer 6 -->
+                    <div class="trainer-card p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="h-72 rounded-2xl overflow-hidden mb-5 bg-slate-900">
+                                <img src="T6.jpg" alt="Coach Sameer" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-montserrat">Coach Sameer</h3>
+                            <p class="text-purple-400 font-semibold text-xs uppercase tracking-wider mb-2">Hypertrophy &
+                                Physique Coach</p>
+                            <p class="text-slate-400 text-xs mb-4">
+                                Gold's Gym Institute certified. Specializes in bodybuilding symmetry, progressive
+                                volume, and contest preparation.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 text-[11px] mb-6">
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Gold's
+                                    Gym Certified</span>
+                                <span
+                                    class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">Muscle
+                                    Hypertrophy</span>
+                            </div>
+                        </div>
+                        <button onclick="window.bookTrainer('Coach Sameer')"
+                            class="btn-primary w-full py-2.5 text-xs font-bold">
+                            <i class="fas fa-handshake mr-1.5"></i>Train With Sameer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: CALORIE & MACRO CALCULATOR ==================== -->
+        <section id="page-calculator" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Scientific Nutrition</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Calorie & Macro Calculator</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Calculate your exact Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and
+                        optimal daily protein, carb, and fat targets using the Mifflin-St Jeor formula.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Calculator Inputs -->
+                    <div class="lg:col-span-6 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800">
+                        <h3 class="text-xl font-bold text-white mb-6 font-montserrat flex items-center gap-2">
+                            <i class="fas fa-calculator text-blue-400"></i> Enter Your Stats
+                        </h3>
+
+                        <form id="fitnessCalorieForm" class="space-y-4">
+                            <!-- Gender -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Gender</label>
+                                <div class="grid grid-cols-2 gap-3 text-xs">
+                                    <label
+                                        class="flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-blue-500">
+                                        <input type="radio" name="calcGender" value="male" checked
+                                            class="text-blue-600 focus:ring-0">
+                                        <span class="text-white font-bold"><i
+                                                class="fas fa-mars mr-1 text-blue-400"></i> Male</span>
+                                    </label>
+                                    <label
+                                        class="flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-blue-500">
+                                        <input type="radio" name="calcGender" value="female"
+                                            class="text-blue-600 focus:ring-0">
+                                        <span class="text-white font-bold"><i
+                                                class="fas fa-venus mr-1 text-pink-400"></i> Female</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Age, Weight, Height -->
+                            <div class="grid grid-cols-3 gap-3">
+                                <div>
+                                    <label for="calcAge" class="block text-xs font-semibold text-slate-300 mb-1">Age
+                                        (Years)</label>
+                                    <input type="number" id="calcAge" class="contact-input w-full text-sm"
+                                        placeholder="25" min="14" max="90" value="25" required>
+                                </div>
+                                <div>
+                                    <label for="calcWeight"
+                                        class="block text-xs font-semibold text-slate-300 mb-1">Weight (kg)</label>
+                                    <input type="number" id="calcWeight" class="contact-input w-full text-sm"
+                                        placeholder="70" min="30" max="250" value="72" required>
+                                </div>
+                                <div>
+                                    <label for="calcHeight"
+                                        class="block text-xs font-semibold text-slate-300 mb-1">Height (cm)</label>
+                                    <input type="number" id="calcHeight" class="contact-input w-full text-sm"
+                                        placeholder="175" min="100" max="240" value="175" required>
+                                </div>
+                            </div>
+
+                            <!-- Activity Level -->
+                            <div>
+                                <label for="calcActivity"
+                                    class="block text-xs font-semibold text-slate-300 mb-1">Physical Activity
+                                    Level</label>
+                                <select id="calcActivity" class="contact-input w-full text-sm" required>
+                                    <option value="1.2">Sedentary (Desk job, little or no exercise)</option>
+                                    <option value="1.375">Lightly Active (Light exercise 1-3 days/week)</option>
+                                    <option value="1.55" selected>Moderately Active (Gym workout 3-5 days/week)</option>
+                                    <option value="1.725">Very Active (Heavy strength & cardio 6-7 days/week)</option>
+                                    <option value="1.9">Extremely Active (Athletic training twice daily)</option>
+                                </select>
+                            </div>
+
+                            <!-- Fitness Goal -->
+                            <div>
+                                <label for="calcGoal" class="block text-xs font-semibold text-slate-300 mb-1">Fitness
+                                    Goal</label>
+                                <select id="calcGoal" class="contact-input w-full text-sm" required>
+                                    <option value="fat_loss_aggressive">Fat Loss (Deficit of 500 kcal/day)</option>
+                                    <option value="fat_loss_mild">Mild Fat Loss (Deficit of 250 kcal/day)</option>
+                                    <option value="maintenance" selected>Maintain Weight & Recomposition (0 kcal)
+                                    </option>
+                                    <option value="muscle_gain_lean">Lean Muscle Gain (Surplus of 300 kcal/day)</option>
+                                    <option value="bulking_heavy">Heavy Muscle Bulking (Surplus of 500 kcal/day)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <button type="submit"
+                                class="btn-primary w-full py-3.5 text-sm font-bold shadow-xl shadow-blue-600/30">
+                                <i class="fas fa-calculator mr-2"></i>Calculate My Nutrition Profile
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Calculator Output & Nutrition Breakdown -->
+                    <div class="lg:col-span-6 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800"
+                        id="calcResultContainer">
+                        <h3 class="text-xl font-bold text-white mb-6 font-montserrat flex items-center gap-2">
+                            <i class="fas fa-chart-pie text-cyan-400"></i> Your Custom Targets
+                        </h3>
+
+                        <!-- Big Number Calories -->
+                        <div
+                            class="p-6 rounded-2xl bg-gradient-to-r from-blue-900/40 via-cyan-900/30 to-slate-900 border border-blue-500/30 text-center mb-6">
+                            <span class="text-xs uppercase font-bold text-cyan-300 tracking-wider">Target Daily
+                                Calories</span>
+                            <div class="text-4xl sm:text-5xl font-black text-white mt-1 font-montserrat"
+                                id="resTargetCalories">2,426 <span
+                                    class="text-xl font-normal text-slate-300">kcal/day</span></div>
+                            <div class="text-xs text-slate-400 mt-2 flex justify-center gap-4">
+                                <span>BMR: <strong class="text-white" id="resBmr">1,698 kcal</strong></span>
+                                <span>&bull;</span>
+                                <span>TDEE: <strong class="text-white" id="resTdee">2,426 kcal</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Macro Breakdown Grid -->
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <div class="macro-box">
+                                <div class="text-[10px] uppercase font-bold text-blue-400 tracking-wider">Protein (30%)
+                                </div>
+                                <div class="text-xl sm:text-2xl font-black text-white mt-1" id="resProteinGrams">182g
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5" id="resProteinKcal">728 kcal</div>
+                            </div>
+                            <div class="macro-box">
+                                <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wider">Carbs (45%)
+                                </div>
+                                <div class="text-xl sm:text-2xl font-black text-white mt-1" id="resCarbsGrams">273g
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5" id="resCarbsKcal">1,092 kcal</div>
+                            </div>
+                            <div class="macro-box">
+                                <div class="text-[10px] uppercase font-bold text-amber-400 tracking-wider">Fats (25%)
+                                </div>
+                                <div class="text-xl sm:text-2xl font-black text-white mt-1" id="resFatsGrams">67g</div>
+                                <div class="text-[10px] text-slate-400 mt-0.5" id="resFatsKcal">606 kcal</div>
+                            </div>
+                        </div>
+
+                        <!-- Hydration & Guidelines Advice -->
+                        <div
+                            class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2 mb-6">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-droplet text-blue-400 text-sm"></i>
+                                <span>Target Daily Hydration: <strong class="text-white" id="resWater">3.5 - 4.0
+                                        Liters</strong> of clean water</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-circle-check text-green-400 text-sm"></i>
+                                <span>Estimated Time to Goal: Consistent 8-12 weeks under proper coaching</span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#contact" class="btn-primary nav-button py-2.5 px-6 text-xs sm:text-sm">
+                                <i class="fas fa-user-doctor mr-1.5"></i>Get Free Diet Chart at Our Desk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: PLANS & PRICING ==================== -->
+        <section id="page-pricing" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Transparent
+                        Memberships</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Gym Membership Plans</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        No hidden enrollment fees. Full access to strength arena, cardio deck, boxing bags, lockers, and
+                        showers.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Plan 1: 1 Month -->
+                    <div class="pricing-card p-8 flex flex-col justify-between">
+                        <div>
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full">Flexible
+                                Starter</span>
+                            <h3 class="text-2xl font-bold text-white mt-4 font-montserrat">1 Month Starter</h3>
+                            <p class="text-slate-400 text-sm mt-1 mb-6">Perfect to test the equipment and jumpstart your
+                                fitness journey.</p>
+
+                            <div class="flex items-baseline gap-2 mb-6">
+                                <span class="text-4xl font-extrabold text-white">₹1,499</span>
+                                <span class="text-slate-400 text-sm">/ month</span>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Full Strength & Free Weights Access</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Motorized Treadmills & Cardio Deck</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Hygienic Lockers & Shower Access</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-500">
+                                    <i class="fas fa-times-circle text-slate-600"></i>
+                                    <span>Custom Nutrition Diet Chart</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-500">
+                                    <i class="fas fa-times-circle text-slate-600"></i>
+                                    <span>Steam Bath Sessions</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button onclick="window.openEnrollModal('1-month-starter')" class="btn-secondary w-full py-3">
+                            Enroll for 1 Month
+                        </button>
+                    </div>
+
+                    <!-- Plan 2: 3 Months (Featured) -->
+                    <div class="pricing-card featured p-8 flex flex-col justify-between relative">
+                        <div
+                            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-extrabold uppercase px-4 py-1 rounded-full tracking-wider shadow-lg">
+                            Most Popular Choice
+                        </div>
+
+                        <div>
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">Body
+                                Transformation</span>
+                            <h3 class="text-2xl font-bold text-white mt-4 font-montserrat">3-Month Transformation</h3>
+                            <p class="text-slate-400 text-sm mt-1 mb-6">The ideal timeframe to see visible muscle growth
+                                and fat shredding.</p>
+
+                            <div class="flex items-baseline gap-2 mb-6">
+                                <span class="text-4xl font-extrabold text-blue-400">₹3,999</span>
+                                <span class="text-slate-400 text-sm">(₹1,333/mo)</span>
+                                <span class="text-xs font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded">SAVE
+                                    ₹500</span>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Full Strength & Cardio Deck Access</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Personalized Workout Split Routine</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Custom Diet & Nutrition Consultation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>2 Free Steam Bath Sessions / Month</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Free Guest Day Pass</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button onclick="window.openEnrollModal('3-month-transformation')"
+                            class="btn-primary w-full py-3">
+                            Enroll for 3 Months
+                        </button>
+                    </div>
+
+                    <!-- Plan 3: 1 Year VIP -->
+                    <div class="pricing-card p-8 flex flex-col justify-between">
+                        <div>
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full">Best
+                                Annual Value</span>
+                            <h3 class="text-2xl font-bold text-white mt-4 font-montserrat">1-Year Elite VIP</h3>
+                            <p class="text-slate-400 text-sm mt-1 mb-6">Complete lifestyle dedication with personal
+                                training and full amenities.</p>
+
+                            <div class="flex items-baseline gap-2 mb-6">
+                                <span class="text-4xl font-extrabold text-white">₹11,999</span>
+                                <span class="text-slate-400 text-sm">(₹999/mo)</span>
+                                <span class="text-xs font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded">SAVE
+                                    ₹6,000</span>
+                            </div>
+
+                            <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>365 Days Unlimited Gym & Cardio Access</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span><strong>5 Free 1-on-1 Personal Training Sessions</strong></span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Unlimited Steam & Hot Shower Access</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Quarterly Body Composition Caliper Scans</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                    <span>Free MD Fitness Gym Bag & Shaker</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button onclick="window.openEnrollModal('1-year-vip')" class="btn-secondary w-full py-3">
+                            Enroll for 1 Year VIP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: REVIEWS & TESTIMONIALS ==================== -->
+        <section id="page-testimonials" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Real Transformations</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Member Reviews</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Real words from local lifters, athletes, and working professionals who achieved their dream
+                        physiques at MD Fitness.
+                    </p>
+                </div>
+
+                <!-- Carousel Frame -->
+                <div class="relative glass-panel rounded-3xl p-6 sm:p-12 mb-12 shadow-2xl border border-slate-800">
+                    <div id="testimonialCarousel">
+                        <!-- Slide 1 -->
+                        <div class="testimonial-slide active" data-slide="0">
+                            <div class="flex text-amber-400 text-xl gap-1 mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <blockquote
+                                class="text-xl sm:text-2xl text-slate-100 font-light max-w-3xl italic mb-8 leading-relaxed">
+                                "Joined MD Fitness 6 months ago at 88kg. With Coach Rohan's strength programming and
+                                diet guidance, I am now down to 74kg with visible abs and squatting 120kg. Best gym in
+                                Nalasopara East without a doubt!"
+                            </blockquote>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80"
+                                        alt="Sonam Shirke" class="w-full h-full object-cover">
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-lg font-bold text-white">Sonam Shirke</h4>
+                                    <p class="text-xs text-blue-400 font-medium">Lost 14kg &bull; Strength Lifter</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="testimonial-slide" data-slide="1">
+                            <div class="flex text-amber-400 text-xl gap-1 mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <blockquote
+                                class="text-xl sm:text-2xl text-slate-100 font-light max-w-3xl italic mb-8 leading-relaxed">
+                                "As a working mother, finding time for fitness was hard. Coach Priya designed a
+                                45-minute high-intensity routine that completely cured my chronic backache and gave me
+                                tons of daily energy. Highly recommended!"
+                            </blockquote>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80"
+                                        alt="Nikhat Shaikh" class="w-full h-full object-cover">
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-lg font-bold text-white">Nikhat Shaikh</h4>
+                                    <p class="text-xs text-blue-400 font-medium">Member for 2 Years &bull; Functional
+                                        Health</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="testimonial-slide" data-slide="2">
+                            <div class="flex text-amber-400 text-xl gap-1 mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+                            </div>
+                            <blockquote
+                                class="text-xl sm:text-2xl text-slate-100 font-light max-w-3xl italic mb-8 leading-relaxed">
+                                "The boxing area and heavy bag setup are fantastic. Coach Vikram actually teaches
+                                technical footwork and combinations, not just mindless cardio. The community atmosphere
+                                here is unmatched."
+                            </blockquote>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80"
+                                        alt="Chetan Parmar" class="w-full h-full object-cover">
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-lg font-bold text-white">Chetan Parmar</h4>
+                                    <p class="text-xs text-blue-400 font-medium">Boxing & Combat Trainee</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="testimonial-slide" data-slide="3">
+                            <div class="flex text-amber-400 text-xl gap-1 mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <blockquote
+                                class="text-xl sm:text-2xl text-slate-100 font-light max-w-3xl italic mb-8 leading-relaxed">
+                                "Pristine hygiene, properly sanitized machines, and very knowledgeable coaches who don't
+                                let you perform dangerous form. The annual VIP membership is worth every single rupee."
+                            </blockquote>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80"
+                                        alt="Priya Sharma" class="w-full h-full object-cover">
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="text-lg font-bold text-white">Priya Sharma</h4>
+                                    <p class="text-xs text-blue-400 font-medium">Annual VIP Member</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <button id="prevTestimonial"
+                        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/90 border border-slate-700 text-white hover:bg-blue-600 hover:border-blue-500 flex items-center justify-center transition shadow-lg"
+                        aria-label="Previous Review">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextTestimonial"
+                        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/90 border border-slate-700 text-white hover:bg-blue-600 hover:border-blue-500 flex items-center justify-center transition shadow-lg"
+                        aria-label="Next Review">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Carousel Indicators -->
+                    <div class="flex justify-center items-center gap-2 mt-6" id="testimonialIndicators">
+                        <button class="indicator active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="indicator" data-index="1" aria-label="Slide 2"></button>
+                        <button class="indicator" data-index="2" aria-label="Slide 3"></button>
+                        <button class="indicator" data-index="3" aria-label="Slide 4"></button>
+                    </div>
+                </div>
+
+                <!-- Call to action to write a review -->
+                <div class="text-center">
+                    <button id="openReviewModalBtn"
+                        class="btn-primary px-8 py-3.5 text-base shadow-xl shadow-blue-600/30">
+                        <i class="fas fa-pen-to-square mr-2"></i>Add Your Member Review
+                    </button>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-3">Share your transformation story and inspire fellow
+                        fitness enthusiasts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: GALLERY ==================== -->
+        <section id="page-gallery" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Facility Tour</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Gym Photo Gallery</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Take a look inside MD Fitness. Our strength floor, cardio equipment, boxing bag zone, and steam
+                        amenities.
+                    </p>
+                </div>
+
+                <!-- Gallery Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10" id="galleryFilterContainer">
+                    <button class="pill-tab active" data-filter="all">All Facilities</button>
+                    <button class="pill-tab" data-filter="strength">Strength Floor</button>
+                    <button class="pill-tab" data-filter="cardio">Cardio Deck</button>
+                    <button class="pill-tab" data-filter="combat">Boxing & Functional</button>
+                    <button class="pill-tab" data-filter="amenities">Amenities & Steam</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+                    <!-- Populated dynamically by script -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: CONTACT & FREE TRIAL ==================== -->
+        <section id="page-contact" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">Visit or Book</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Claim Free 1-Day Trial Pass</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Experience our gym floor and equipment with zero obligations. Fill out the quick form below or
+                        drop by our facility in Central Park, Nalasopara East.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Free Trial & Inquiry Form -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-800">
+                            <h3 class="text-2xl font-bold text-white mb-2 font-montserrat flex items-center gap-2">
+                                <i class="fas fa-ticket text-orange-400"></i> Free Trial Pass Registration
+                            </h3>
+                            <p class="text-slate-400 text-sm mb-8">We will send your digital day pass and coordinate
+                                your workout slot.</p>
+
+                            <form id="contactForm" class="space-y-5" novalidate>
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-300 mb-1.5">Full Name
+                                        *</label>
+                                    <input type="text" id="name" name="name" class="contact-input w-full"
+                                        placeholder="e.g. Rahul Patil" required>
+                                    <div id="nameError" class="text-xs text-red-400 mt-1 hidden">Please provide your
+                                        full name</div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-slate-300 mb-1.5">Email
+                                            Address *</label>
+                                        <input type="email" id="email" name="email" class="contact-input w-full"
+                                            placeholder="name@example.com" required>
+                                        <div id="emailError" class="text-xs text-red-400 mt-1 hidden">Please provide a
+                                            valid email</div>
+                                    </div>
+                                    <div>
+                                        <label for="phone"
+                                            class="block text-sm font-medium text-slate-300 mb-1.5">WhatsApp / Phone
+                                            *</label>
+                                        <input type="tel" id="phone" name="phone" class="contact-input w-full"
+                                            placeholder="+91 98765 43210" required>
+                                        <div id="phoneError" class="text-xs text-red-400 mt-1 hidden">Please enter a
+                                            10-digit mobile number</div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="workoutGoal"
+                                            class="block text-sm font-medium text-slate-300 mb-1.5">Primary Fitness
+                                            Goal</label>
+                                        <select id="workoutGoal" class="contact-input w-full">
+                                            <option value="Fat Loss & Weight Management">Fat Loss & Weight Management
+                                            </option>
+                                            <option value="Muscle Hypertrophy & Bodybuilding">Muscle Hypertrophy &
+                                                Bodybuilding</option>
+                                            <option value="Boxing & Kickboxing Skills">Boxing & Kickboxing Skills
+                                            </option>
+                                            <option value="General Health, Mobility & Yoga">General Health, Mobility &
+                                                Yoga</option>
+                                            <option value="Personal Training Inquiries">Personal Training Inquiries
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="timeSlot"
+                                            class="block text-sm font-medium text-slate-300 mb-1.5">Preferred Workout
+                                            Slot</label>
+                                        <select id="timeSlot" class="contact-input w-full">
+                                            <option value="Morning (6:00 AM - 10:00 AM)">Morning (6:00 AM - 10:00 AM)
+                                            </option>
+                                            <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00
+                                                PM)</option>
+                                            <option value="Evening (5:00 PM - 10:30 PM)">Evening (5:00 PM - 10:30 PM)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-slate-300 mb-1.5">Any
+                                        Questions or Health History? (Optional)</label>
+                                    <textarea id="message" name="message" rows="3" class="contact-input w-full"
+                                        placeholder="Tell us if you have any previous injuries or specific requirements..."></textarea>
+                                    <div id="messageError" class="text-xs text-red-400 mt-1 hidden">Please type your
+                                        message</div>
+                                </div>
+
+                                <div id="formSuccess"
+                                    class="hidden p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-300 text-sm flex items-center gap-3">
+                                    <i class="fas fa-circle-check text-green-400 text-lg"></i>
+                                    <span>Awesome! Your Free Trial Day Pass has been reserved. Our gym coordinator will
+                                        contact you on WhatsApp shortly.</span>
+                                </div>
+
+                                <button type="submit"
+                                    class="btn-fire w-full py-3.5 text-base shadow-xl shadow-orange-600/30">
+                                    <i class="fas fa-ticket mr-2"></i>Generate Free Day Pass
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Gym Contact Details -->
+                    <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                        <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                            <h3 class="text-2xl font-bold text-white font-montserrat">Gym Location & Hours</h3>
+
+                            <!-- Address -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-location-dot text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Club Address</h4>
+                                    <p class="text-slate-400 text-sm mt-1 leading-relaxed">
+                                        Plot No 28, Rajni Apartment, 1st Floor<br>
+                                        Near Muthoot Finance, Opp. Kotak Mahindra ATM<br>
+                                        Central Park, Nalasopara East, Palghar - 401209
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone-volume text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Reception & Helpline</h4>
+                                    <p class="text-slate-400 text-sm mt-1">
+                                        +91 98765 43210 / +91 91234 56789
+                                    </p>
+                                    <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-1.5 text-xs text-green-400 font-semibold mt-1 hover:underline">
+                                        <i class="fab fa-whatsapp"></i> Chat directly on WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope-open-text text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Email Desk</h4>
+                                    <p class="text-slate-400 text-sm mt-1">
+                                        info@mdfitness.in<br>
+                                        trainer@mdfitness.in
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Working Hours -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Gym Operating Hours</h4>
+                                    <p class="text-slate-400 text-sm mt-1">
+                                        <strong>Monday &ndash; Saturday:</strong> 6:00 AM &ndash; 10:30 PM<br>
+                                        <strong>Sunday:</strong> 7:00 AM &ndash; 1:00 PM (Recovery Session)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Directions Card -->
+                        <div
+                            class="glass-panel p-5 rounded-2xl border border-blue-500/20 flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Walking from Railway Station?</h4>
+                                <p class="text-xs text-slate-400">Located only 5-7 minutes walk from Nalasopara East
+                                    Station.</p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Nalasopara+East+Central+Park" target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn-secondary py-2 px-4 text-xs font-semibold whitespace-nowrap">
+                                <i class="fas fa-diamond-turn-right mr-1.5"></i>Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE: STAFF & SUPPORT PORTAL ==================== -->
+        <section id="page-responses" class="page-section hidden bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <span class="text-cyan-400 text-sm font-bold uppercase tracking-wider">Internal Management</span>
+                    <h2 class="section-title text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 font-montserrat">
+                        Staff & Support Portal</h2>
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light">
+                        Administer trial pass requests, new membership enrollments, member feedback, and newsletter
+                        inquiries.
+                    </p>
+                </div>
+
+                <!-- Admin Login State (Visible if logged out) -->
+                <div id="adminLoginFormContainer"
+                    class="max-w-md mx-auto glass-panel p-8 rounded-3xl border border-slate-800 shadow-2xl">
+                    <div class="text-center mb-6">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mx-auto mb-3 text-2xl">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white font-montserrat">Staff Authentication</h3>
+                        <p class="text-xs text-slate-400 mt-1">MD Fitness Authorized Personnel Only</p>
+                    </div>
+
+                    <form id="adminLoginForm" class="space-y-4">
+                        <div>
+                            <label for="adminUsername" class="block text-xs font-semibold text-slate-300 mb-1">Staff
+                                ID</label>
+                            <input type="text" id="adminUsername" class="contact-input w-full text-sm"
+                                placeholder="e.g. admin" required>
+                        </div>
+                        <div>
+                            <label for="adminPassword"
+                                class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+                            <div class="relative">
+                                <input type="password" id="adminPassword" class="contact-input w-full text-sm pr-10"
+                                    placeholder="••••••••" required>
+                                <button type="button" id="toggleAdminPass"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-sm"
+                                    aria-label="Toggle password visibility">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="text-xs text-slate-400 p-3 rounded-xl bg-slate-900 border border-slate-800">
+                            <i class="fas fa-info-circle text-blue-400 mr-1"></i> Staff Demo Credentials: <code
+                                class="text-blue-300">admin</code> / <code class="text-blue-300">admin123</code>
+                        </div>
+
+                        <button type="submit"
+                            class="btn-primary w-full py-3 text-sm font-bold shadow-lg shadow-blue-600/30">
+                            Access Portal
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Admin Dashboard (Visible when authenticated) -->
+                <div id="responseData" class="hidden space-y-8">
+                    <!-- Top Bar with Stats and Logout -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 flex items-center justify-center text-xl">
+                                <i class="fas fa-circle-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">MD Fitness Front Desk Console</h3>
+                                <p class="text-xs text-slate-400">Logged in as Administrator &bull; Local Database
+                                    Active</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 w-full md:w-auto">
+                            <button id="clearAllDataBtn"
+                                class="px-4 py-2 rounded-xl bg-red-600/20 border border-red-500/30 text-red-300 hover:bg-red-600 hover:text-white transition text-xs font-semibold">
+                                <i class="fas fa-trash-can mr-1.5"></i>Reset Demo Data
+                            </button>
+                            <button id="logoutButton"
+                                class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-700 transition text-xs font-semibold">
+                                <i class="fas fa-right-from-bracket mr-1.5"></i>Log Out
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Statistics Summary Counters -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="adminMetricsSummary">
+                        <!-- Injected via script -->
+                    </div>
+
+                    <!-- Dashboard Tabs -->
+                    <div class="flex items-center gap-2 border-b border-slate-800 pb-3" id="adminTabsContainer">
+                        <button class="pill-tab active" data-tab="trials"><i class="fas fa-ticket mr-1.5"></i>Trial Pass
+                            Requests</button>
+                        <button class="pill-tab" data-tab="enrollments"><i
+                                class="fas fa-id-card mr-1.5"></i>Enrollments</button>
+                        <button class="pill-tab" data-tab="reviews"><i class="fas fa-star mr-1.5"></i>Member
+                            Reviews</button>
+                        <button class="pill-tab" data-tab="newsletter"><i
+                                class="fas fa-paper-plane mr-1.5"></i>Newsletter</button>
+                    </div>
+
+                    <!-- Dashboard Tab Content Container -->
+                    <div id="adminTabContent"
+                        class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 min-h-[300px]">
+                        <!-- Rendered via script -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-10 text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+                <!-- Col 1: Store Intro -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white">
+                            <i class="fas fa-dumbbell text-sm"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tight font-montserrat text-white">
+                            MD <span class="text-blue-500">FITNESS</span>
+                        </span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-sm mb-6 leading-relaxed">
+                        Nalasopara's leading strength & health destination. Olympic weightlifting, functional boxing,
+                        yoga, high-performance cardio, and certified coaching since 2014.
+                    </p>
+                    <div class="flex space-x-3 text-slate-300">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500 hover:text-blue-400 flex items-center justify-center transition"
+                            aria-label="Facebook">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                            class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500 hover:text-cyan-400 flex items-center justify-center transition"
+                            aria-label="Twitter">
+                            <i class="fab fa-x-twitter text-sm"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500 hover:text-pink-400 flex items-center justify-center transition"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 hover:border-red-500 hover:text-red-400 flex items-center justify-center transition"
+                            aria-label="YouTube">
+                            <i class="fab fa-youtube text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 font-montserrat">Quick Links
+                    </h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#home" class="nav-button hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="nav-button hover:text-white transition">About Gym</a></li>
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Training Programs</a>
+                        </li>
+                        <li><a href="#trainers" class="nav-button hover:text-white transition">Certified Coaches</a>
+                        </li>
+                        <li><a href="#calculator" class="nav-button hover:text-white transition">Calorie Calculator</a>
+                        </li>
+                        <li><a href="#pricing" class="nav-button hover:text-white transition">Membership Plans</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Programs -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 font-montserrat">Training</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Strength &
+                                Hypertrophy</a></li>
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Cardio Fat Shred</a></li>
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Boxing Combat</a></li>
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Functional HIIT</a></li>
+                        <li><a href="#programs" class="nav-button hover:text-white transition">Yoga & Recovery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 font-montserrat">Workout Tips
+                    </h4>
+                    <p class="text-xs text-slate-400 mb-3">Subscribe for weekly workout tips, diet guidance, and
+                        membership offers.</p>
+
+                    <form id="newsletterForm" class="space-y-2" novalidate>
+                        <div class="flex">
+                            <input type="email" id="newsletterEmail" placeholder="your.email@example.com"
+                                class="w-full bg-slate-900 border border-slate-700/80 rounded-l-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                                required>
+                            <button type="submit"
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-r-xl transition flex items-center justify-center"
+                                aria-label="Subscribe">
+                                <i class="fas fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+                        <div id="newsletterSuccess" class="hidden text-xs text-green-400 font-medium">
+                            <i class="fas fa-check mr-1"></i> Subscribed successfully!
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 MD Fitness Club. All rights reserved. Nalasopara East.</p>
+                <div class="flex items-center space-x-6">
+                    <button onclick="window.openLegalModal('rules')" class="hover:text-slate-300 transition">Gym Rules &
+                        Etiquette</button>
+                    <button onclick="window.openLegalModal('privacy')" class="hover:text-slate-300 transition">Privacy
+                        Policy</button>
+                    <button onclick="window.openLegalModal('membership')"
+                        class="hover:text-slate-300 transition">Membership Terms</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS & DIALOGS ==================== -->
+
+    <!-- 1. Membership Enrollment Modal -->
+    <dialog id="enrollModal" class="w-[min(540px,94%)]">
+        <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-id-card text-blue-400"></i>
+                    <h3 class="text-xl font-bold text-white font-montserrat">Membership Enrollment</h3>
+                </div>
+                <button type="button" id="closeEnrollBtn" class="text-slate-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <form id="enrollForm" class="space-y-4">
+                <div>
+                    <label for="enrollPlanSelect" class="block text-xs font-semibold text-slate-300 mb-1">Selected
+                        Plan</label>
+                    <select id="enrollPlanSelect" class="contact-input w-full text-sm">
+                        <option value="1-month-starter">1 Month Starter Plan - ₹1,499</option>
+                        <option value="3-month-transformation" selected>3-Month Transformation - ₹3,999 (Popular)
+                        </option>
+                        <option value="1-year-vip">1-Year Elite VIP - ₹11,999 (Best Value)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="enrollName" class="block text-xs font-semibold text-slate-300 mb-1">Full Name
+                            *</label>
+                        <input type="text" id="enrollName" class="contact-input w-full text-sm"
+                            placeholder="e.g. Rahul Sharma" required>
+                    </div>
+                    <div>
+                        <label for="enrollPhone" class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp /
+                            Phone *</label>
+                        <input type="tel" id="enrollPhone" class="contact-input w-full text-sm"
+                            placeholder="+91 9876543210" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="enrollEmail" class="block text-xs font-semibold text-slate-300 mb-1">Email Address
+                        *</label>
+                    <input type="email" id="enrollEmail" class="contact-input w-full text-sm"
+                        placeholder="rahul@example.com" required>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="enrollStartDate" class="block text-xs font-semibold text-slate-300 mb-1">Starting
+                            Date</label>
+                        <input type="date" id="enrollStartDate" class="contact-input w-full text-sm">
+                    </div>
+                    <div>
+                        <label for="enrollPayment" class="block text-xs font-semibold text-slate-300 mb-1">Payment
+                            Method</label>
+                        <select id="enrollPayment" class="contact-input w-full text-sm">
+                            <option value="Gym Desk (Cash / UPI)">Pay at Gym Reception</option>
+                            <option value="Online UPI / QR">Online UPI / GPay</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div
+                    class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex justify-between items-center text-sm">
+                    <span class="text-slate-400">Total Payable:</span>
+                    <span id="enrollTotalAmount" class="text-lg font-black text-blue-400">₹3,999</span>
+                </div>
+
+                <button type="submit" class="btn-primary w-full py-3.5 text-sm font-bold shadow-xl shadow-blue-600/30">
+                    <i class="fas fa-check-circle mr-2"></i>Confirm Membership Booking
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- 2. Auth Modal (Member Login / Register) -->
+    <dialog id="authModal" class="w-[min(440px,94%)]">
+        <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-user-circle text-blue-400 text-xl"></i>
+                    <h3 id="authModalTitle" class="text-xl font-bold text-white font-montserrat">Member Portal</h3>
+                </div>
+                <button type="button" id="closeAuth" class="text-slate-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex rounded-xl bg-slate-900 p-1 mb-5 text-xs font-semibold">
+                <button id="authTabLogin" class="flex-1 py-2 rounded-lg bg-blue-600 text-white transition">Member Sign
+                    In</button>
+                <button id="authTabRegister"
+                    class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white transition">Register Pass</button>
+            </div>
+
+            <form id="authForm" class="space-y-4">
+                <div id="authNameField" class="hidden">
+                    <label for="authName" class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+                    <input type="text" id="authName" class="contact-input w-full text-sm" placeholder="Your name">
+                </div>
+
+                <div>
+                    <label for="authEmail" class="block text-xs font-semibold text-slate-300 mb-1">Email / Member
+                        ID</label>
+                    <input type="email" id="authEmail" class="contact-input w-full text-sm"
+                        placeholder="member@example.com" required>
+                </div>
+
+                <div>
+                    <label for="authPass" class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+                    <input type="password" id="authPass" class="contact-input w-full text-sm" placeholder="••••••••"
+                        required>
+                </div>
+
+                <button id="authSubmit" type="submit"
+                    class="btn-primary w-full py-3 text-sm font-bold shadow-lg shadow-blue-600/30">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- 3. Customer Review Modal -->
+    <dialog id="reviewModal" class="w-[min(500px,94%)]">
+        <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-star text-amber-400"></i>
+                    <h3 class="text-xl font-bold text-white font-montserrat">Write Member Review</h3>
+                </div>
+                <button type="button" id="closeReview" class="text-slate-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <form id="reviewForm" class="space-y-4">
+                <div>
+                    <label for="rev-name" class="block text-xs font-semibold text-slate-300 mb-1">Your Name *</label>
+                    <input id="rev-name" class="contact-input w-full text-sm" placeholder="e.g. Vikram Joshi" required>
+                </div>
+
+                <div>
+                    <label for="rev-device" class="block text-xs font-semibold text-slate-300 mb-1">Training Program /
+                        Coach *</label>
+                    <input id="rev-device" class="contact-input w-full text-sm"
+                        placeholder="e.g. Strength Training / Coach Rohan" required>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Rating *</label>
+                    <div class="flex items-center gap-2 text-2xl text-amber-400 cursor-pointer"
+                        id="starRatingContainer">
+                        <i class="fas fa-star star-btn" data-value="1"></i>
+                        <i class="fas fa-star star-btn" data-value="2"></i>
+                        <i class="fas fa-star star-btn" data-value="3"></i>
+                        <i class="fas fa-star star-btn" data-value="4"></i>
+                        <i class="fas fa-star star-btn" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="rev-rating" value="5">
+                </div>
+
+                <div>
+                    <label for="rev-comment" class="block text-xs font-semibold text-slate-300 mb-1">Your Experience &
+                        Transformation *</label>
+                    <textarea id="rev-comment" rows="4" class="contact-input w-full text-sm"
+                        placeholder="Share how MD Fitness helped you achieve your physical goals..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full py-3 text-sm font-bold shadow-lg shadow-blue-600/30">
+                    Submit Review
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- 4. Quick View / Facility Lightbox Modal -->
+    <dialog id="quickViewModal" class="w-[min(650px,94%)]">
+        <div class="p-6 sm:p-8" id="quickViewContent">
+            <!-- Dynamically populated -->
+        </div>
+    </dialog>
+
+    <!-- 5. Legal / Gym Policy Modal -->
+    <dialog id="legalModal" class="w-[min(600px,94%)]">
+        <div class="p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-800">
+                <h3 id="legalModalTitle" class="text-xl font-bold text-white font-montserrat">Gym Policy Information
+                </h3>
+                <button type="button" id="closeLegalModal" class="text-slate-400 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <div id="legalModalBody"
+                class="text-sm text-slate-300 space-y-3 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Content set dynamically -->
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

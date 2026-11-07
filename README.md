@@ -1,5 +1,12 @@
 # MD Fitness &bull; Premier Health & Fitness Club
 
+[![Live Production Site](https://img.shields.io/badge/Live%20Demo-mdfitness--gym.netlify.app-2563eb?style=for-the-badge&logo=netlify)](https://mdfitness-gym.netlify.app)
+[![CI Status](https://img.shields.io/badge/Tests-Passing%20(76%20Checks)-success?style=for-the-badge&logo=githubactions)](https://github.com/shivanshdubeytech/MDFitness)
+[![License](https://img.shields.io/badge/License-ISC-blue?style=for-the-badge)](package.json)
+
+> **Live Production Website:** [https://mdfitness-gym.netlify.app](https://mdfitness-gym.netlify.app)  
+> **Source Repository:** [https://github.com/shivanshdubeytech/MDFitness](https://github.com/shivanshdubeytech/MDFitness)
+
 A modern, production-grade gym web application built for **MD Fitness** (Central Park, Nalasopara East, Palghar). Features an interactive single-page application (SPA) architecture, responsive design, certified trainer roster, scientific calorie & macronutrient calculator, membership enrollment engine, facilities gallery, member review carousel, free day pass booking, and staff management console.
 
 ---
